@@ -6,6 +6,8 @@ public class PlayerPuppet : InputPuppet
 
     public bool Grounded { get => grounded; set => SetIsGrounded(value); }
     [SerializeField] bool grounded = true;
+    [SerializeField] public bool canMoveLeft = true;
+    [SerializeField] public bool canMoveRight = true;
     
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float inAirMoveSpeedMultiplier = 0.25f;
@@ -17,6 +19,10 @@ public class PlayerPuppet : InputPuppet
 
     public override void MoveAction(Vector2 moveVector)
     {
+        if(moveVector.magnitude == 0 && !grounded) return;
+        if(moveVector.x > 0 && !canMoveRight) return;
+        if(moveVector.x < 0 && !canMoveLeft) return;
+
         rb.linearVelocityX = moveVector.normalized.x * (moveSpeed * (grounded ? 1 : inAirMoveSpeedMultiplier));    
     }
 

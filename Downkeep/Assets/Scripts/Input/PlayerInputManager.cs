@@ -34,8 +34,7 @@ public class PlayerInputManager : MonoBehaviour
     private void MoveInput()
     {
         Vector2 movementVector = moveAction.ReadValue<Vector2>();
-        if(movementVector.magnitude > 0)
-            puppet.MoveAction(movementVector);
+        puppet.MoveAction(movementVector);
     }
 
     private void JumpInput(InputAction.CallbackContext context)

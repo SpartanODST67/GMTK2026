@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WhipAttack : Attack
@@ -30,9 +31,10 @@ public class WhipAttack : Attack
 
         Debug.Log("Winding up");
         for(int i = 0; i < windupFrames; i++)
-            yield return null;
+            yield return new WaitForSecondsRealtime(1/60);
         
         bool hasHit = false;
+        HashSet<GameObject> alreadyHit = new();
         for(int i = 0; i < attackFrames; i++)
         {
             Vector3 from = transform.position;
@@ -48,15 +50,20 @@ public class WhipAttack : Attack
 
             foreach(var hit in hits)
             {
-                Debug.Log(hit);
+                if(alreadyHit.Contains(hit.collider.gameObject)) continue;
+                alreadyHit.Add(hit.collider.gameObject);
+                Debug.Log(hit.collider.gameObject);
+
+                if(hit.collider.gameObject.TryGetComponent(out Health hitHealth))
+                    hitHealth.Hurt();
             }
 
-            yield return null;
+            yield return new WaitForSecondsRealtime(1/60);
         }
 
         Debug.Log("Recovering");
         for(int i = 0; i < recoveryFrames; i++)
-            yield return null;
+            yield return new WaitForSecondsRealtime(1/60);
 
         Debug.Log("Recovered");
         isAttacking = false;

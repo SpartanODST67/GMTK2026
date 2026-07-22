@@ -21,7 +21,7 @@ public class PlayerPuppet : InputPuppet
 
     public override void MoveAction(Vector2 moveVector)
     {
-        if(moveVector.magnitude == 0 && !grounded) return;
+        if(moveVector.x == 0 && !grounded) return;
         if(moveVector.x > 0 && !canMoveRight) return;
         if(moveVector.x < 0 && !canMoveLeft) return;
 

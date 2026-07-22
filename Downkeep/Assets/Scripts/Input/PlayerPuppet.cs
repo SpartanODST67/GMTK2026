@@ -17,6 +17,8 @@ public class PlayerPuppet : InputPuppet
     [SerializeField] int maxInAirJumps = 1;
     private int curInAirJumps = 0;
 
+    [SerializeField] WhipAttack whipAttack;
+
     public override void MoveAction(Vector2 moveVector)
     {
         if(moveVector.magnitude == 0 && !grounded) return;
@@ -46,7 +48,7 @@ public class PlayerPuppet : InputPuppet
 
     public override void AttackAction()
     {
-        
+        whipAttack.PerformAttack();
     }
 
     public void SetCurInAirJumps(int jumps)

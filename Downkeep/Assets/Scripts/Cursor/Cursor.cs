@@ -11,13 +11,18 @@ public enum CursorState
 
 public class Cursor : MonoBehaviour
 {
+    public static Cursor Instance { get; private set; }
+
     [SerializeField] SerializableDictionary<CursorState, Sprite> cursorSprites;
     private Dictionary<CursorState, Sprite> spriteDict;
+    
     [SerializeField] SpriteRenderer sprite;
     Camera cam;
 
     void Awake()
     {
+        Instance = this;
+
         spriteDict = cursorSprites.ToDict();
         cam = Camera.main;
     }

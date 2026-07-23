@@ -16,7 +16,7 @@ public class WhipAttack : Attack
     [SerializeField] int windupFrames = 3;
     [SerializeField] int attackFrames = 2;
     [SerializeField] int recoveryFrames = 3;
-    bool isAttacking = false;
+    public bool isAttacking = false;
     [SerializeField] PlayerBounce bounce;
 
     Coroutine attackCoroutine;
@@ -44,7 +44,7 @@ public class WhipAttack : Attack
             Vector3 from = transform.position;
             Vector3 to = Cursor.Instance.transform.position;
             to.z = 0;
-            Vector3 direction = (to - from).normalized * attackRange;
+            Vector3 direction = to - from;
 
             Ray ray = new(transform.position, direction);
             Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.darkRed, 1f);    

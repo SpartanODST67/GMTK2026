@@ -14,7 +14,7 @@ public class PlayerBounce : MonoBehaviour
 
     IEnumerator BounceRoutine(Vector3 force)
     {
-        playerPuppet.isBouncing = true;
+        playerPuppet.canMove = false;
         yield return null;
 
         if(rb.linearVelocityY < 0)
@@ -25,7 +25,7 @@ public class PlayerBounce : MonoBehaviour
         for(int i = 0; i < bounceLength; i++)
             yield return new WaitForSecondsRealtime(1/60);
 
-        playerPuppet.isBouncing = false;        
+        playerPuppet.canMove = true;        
     }
 
 }

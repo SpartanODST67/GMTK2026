@@ -9,6 +9,8 @@ public class GroundedCheck: MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Grounded");
+
         onEnterGround.Invoke();
     }
 

@@ -8,6 +8,7 @@ public class PlayerInputManager : MonoBehaviour
     InputAction moveAction;
     InputAction jumpAction;
     InputAction attackAction;
+    InputAction altAttackAction;
 
     [SerializeField] InputPuppet puppet;
 
@@ -16,18 +17,21 @@ public class PlayerInputManager : MonoBehaviour
         moveAction = input.actions["Move"];
         jumpAction = input.actions["Jump"];
         attackAction = input.actions["Attack"];
+        altAttackAction = input.actions["Alt Attack"];
     }
 
     void OnEnable()
     {
         jumpAction.started += JumpInput;
         attackAction.started += AttackInput;
+        altAttackAction.started += AltAttackInput;
     }
 
     void OnDisable()
     {
         jumpAction.started -= JumpInput;
         attackAction.started -= AttackInput;
+        altAttackAction.started -= AltAttackInput;
     }
 
     void FixedUpdate()
@@ -49,5 +53,10 @@ public class PlayerInputManager : MonoBehaviour
     private void AttackInput(InputAction.CallbackContext context)
     {
         puppet.AttackAction();
+    }
+
+    private void AltAttackInput(InputAction.CallbackContext context)
+    {
+        puppet.AltAttackAction();
     }
 }

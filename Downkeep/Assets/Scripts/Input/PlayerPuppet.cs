@@ -8,7 +8,7 @@ public class PlayerPuppet : InputPuppet
     [SerializeField] bool isGrounded = true;
     [SerializeField] public bool canMoveLeft = true;
     [SerializeField] public bool canMoveRight = true;
-    public bool isBouncing = false;
+    public bool canMove = true;
     
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float inAirMoveSpeedMultiplier = 0.25f;
@@ -19,10 +19,11 @@ public class PlayerPuppet : InputPuppet
     private int curInAirJumps = 0;
 
     [SerializeField] WhipAttack whipAttack;
+    [SerializeField] ChainhookAttack chainhookAttack;
 
     public override void MoveAction(Vector2 moveVector)
     {
-        if(isBouncing) return;
+        if(!canMove) return;
         if(moveVector.x == 0 && !isGrounded) return;
         if(moveVector.x > 0 && !canMoveRight) return;
         if(moveVector.x < 0 && !canMoveLeft) return;
@@ -43,14 +44,16 @@ public class PlayerPuppet : InputPuppet
         rb.AddForce(Vector2.up * (jumpForce * (isGrounded ? 1 : inAirJumpForceMultiplier)), ForceMode2D.Impulse);
     }
 
-    public override void AltAttackAction()
-    {
-        
-    }
-
     public override void AttackAction()
     {
+        if(chainhookAttack.isHooked) chainhookAttack.CancelAttack();
         whipAttack.PerformAttack();
+    }
+
+    public override void AltAttackAction()
+    {
+        if(whipAttack.isAttacking) whipAttack.CancelAttack();
+        chainhookAttack.PerformAttack();
     }
 
     public void SetCurInAirJumps(int jumps)
@@ -65,9 +68,9 @@ public class PlayerPuppet : InputPuppet
 
     public void SetIsGrounded(bool grounded)
     {
-        this.isGrounded = grounded;
+        isGrounded = grounded;
 
-        if(this.isGrounded)
+        if(isGrounded)
         {
             SetCurInAirJumps(0);
         }

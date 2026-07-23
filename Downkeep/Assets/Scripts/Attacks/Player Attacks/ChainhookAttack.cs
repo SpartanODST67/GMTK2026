@@ -1,0 +1,86 @@
+using UnityEditor.Callbacks;
+using UnityEngine;
+
+public class ChainhookAttack : Attack
+{
+
+    [SerializeField] LayerMask attackLayers;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] PlayerPuppet playerPuppet;
+    [SerializeField] float pullSpeed;
+    [SerializeField] float coolDownTime = 1f;
+    public int chainhooksSinceGrounded = 0;
+    public bool isHooked = false;
+    public bool isCooldown = false;
+    RaycastHit2D[] hits = new RaycastHit2D[1];
+
+    float gravScale = 1;
+    float lineDamp = 1;
+
+    public override void PerformAttack()
+    {
+        if(isHooked)
+        {
+            CancelAttack();
+            return;
+        }
+
+        if(isCooldown) return;
+
+        Vector3 from = transform.position;
+        Vector3 to = Cursor.Instance.transform.position;
+        to.z = 0;
+        Vector3 direction = to - from;
+
+        Ray ray = new(transform.position, direction);
+        Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.softRed, 1f);    
+        
+        if(Physics2D.RaycastNonAlloc(ray.origin, ray.direction, hits, float.MaxValue, attackLayers) > 0)
+        {
+            isHooked = true;
+            chainhooksSinceGrounded++;
+
+            playerPuppet.canMove = false;
+            gravScale = rb.gravityScale;
+            lineDamp = rb.linearDamping;
+            
+            rb.gravityScale = 0;
+            rb.linearDamping = 0;
+
+            Vector3 origin = transform.position;
+            Vector3 dest = hits[0].point;
+
+            rb.linearVelocity = (dest - origin).normalized * pullSpeed;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        CancelAttack();
+    }
+
+    public override void CancelAttack()
+    {
+        if(!isHooked) return;
+
+        isHooked = false;
+
+        isCooldown = true;
+        Invoke(nameof(Cooldown), coolDownTime * (chainhooksSinceGrounded + 1));
+
+        playerPuppet.canMove = true;
+        rb.gravityScale = gravScale;
+        rb.linearDamping = lineDamp;
+    }
+
+    public void Cooldown()
+    {
+        CancelInvoke();
+        isCooldown = false;
+    }
+
+    public void ResetChainHooksSinceGrounded()
+    {
+        chainhooksSinceGrounded = 0;
+    }
+}

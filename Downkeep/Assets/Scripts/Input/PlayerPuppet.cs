@@ -24,7 +24,7 @@ public class PlayerPuppet : InputPuppet
 
     [SerializeField] WhipAttack whipAttack;
     [SerializeField] ChainhookAttack chainhookAttack;
-    [SerializeField] VampireAnimationHelper animationHelper;
+    [SerializeField] ParticleSystem bats;
 
     public override void MoveAction(Vector2 moveVector)
     {
@@ -52,8 +52,10 @@ public class PlayerPuppet : InputPuppet
         if(rb.linearVelocityY < 0)
             rb.linearVelocityY = 0;
 
-        if(!isGrounded && !isCoyoteTime)
+        if(!isGrounded && !isCoyoteTime) {
+            bats.Play();
             curInAirJumps++;
+        }
 
         isCoyoteTime = false;
         rb.AddForce(Vector2.up * (jumpForce * (isGrounded ? 1 : inAirJumpForceMultiplier)), ForceMode2D.Impulse);

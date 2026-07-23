@@ -234,6 +234,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5679408708252971965}
+        m_TargetAssemblyTypeName: FallTracker, Assembly-CSharp
+        m_MethodName: EndFall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   onLeaveGround:
     m_PersistentCalls:
       m_Calls:
@@ -241,6 +253,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerPuppet, Assembly-CSharp
         m_MethodName: SetIsGrounded
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5679408708252971965}
+        m_TargetAssemblyTypeName: FallTracker, Assembly-CSharp
+        m_MethodName: StartFall
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -772,6 +796,8 @@ GameObject:
   - component: {fileID: 6197814065615260897}
   - component: {fileID: 5000419217168307296}
   - component: {fileID: 1292405525598748898}
+  - component: {fileID: 6696601532450299274}
+  - component: {fileID: 5679408708252971965}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -997,6 +1023,32 @@ MonoBehaviour:
   isHooked: 0
   isCooldown: 0
   sprite: {fileID: 5084791084952171444}
+--- !u!114 &6696601532450299274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039839735050902556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9aa46937131b842b63453ad4a3551c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DepthTracker
+  denominator: 1000
+--- !u!114 &5679408708252971965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039839735050902556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a451b3c033b98e4095d5ab93b6affd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FallTracker
+  denominator: 10
 --- !u!1 &8442253335106961915
 GameObject:
   m_ObjectHideFlags: 0

@@ -158,7 +158,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.53}
+  m_Offset: {x: 0, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -168,7 +168,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3, y: 0.1}
+  m_Size: {x: 0.1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &7415039337238354181
 MonoBehaviour:
@@ -354,12 +354,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2623676403181958527, guid: b4c3d66bdbd87264caefc6405d52383b, type: 3}
+  m_Sprite: {fileID: -2904457877120967500, guid: a31f35c915bf63a4f9231e54345aaabc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.22, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -798,6 +798,8 @@ GameObject:
   - component: {fileID: 1292405525598748898}
   - component: {fileID: 6696601532450299274}
   - component: {fileID: 5679408708252971965}
+  - component: {fileID: 5799600963936515307}
+  - component: {fileID: 2259948778498585408}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -864,10 +866,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -915,7 +917,7 @@ MonoBehaviour:
   rb: {fileID: 2747488521619351705}
   isGrounded: 1
   isCoyoteTime: 1
-  coyoteTime: 0.15
+  coyoteTime: 0.3
   canMoveLeft: 1
   canMoveRight: 1
   canMove: 1
@@ -927,6 +929,7 @@ MonoBehaviour:
   curInAirJumps: 0
   whipAttack: {fileID: 1382121424501129123}
   chainhookAttack: {fileID: 1292405525598748898}
+  animationHelper: {fileID: 2259948778498585408}
 --- !u!114 &5898309440885271277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,6 +1052,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FallTracker
   denominator: 10
+--- !u!95 &5799600963936515307
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039839735050902556}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3657ad53321a5fc46ada9f12a45d5f99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2259948778498585408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039839735050902556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bb5bb633bfd804db8b9de9306b4f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VampireAnimationHelper
+  vampireData: {fileID: 1392428734501779333}
+  chainhook: {fileID: 1292405525598748898}
+  rb: {fileID: 2747488521619351705}
+  sprite: {fileID: 8624122834835797065}
+  animator: {fileID: 5799600963936515307}
 --- !u!1 &8442253335106961915
 GameObject:
   m_ObjectHideFlags: 0

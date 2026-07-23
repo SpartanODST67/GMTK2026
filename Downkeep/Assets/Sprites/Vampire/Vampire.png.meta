@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4c3d66bdbd87264caefc6405d52383b
+guid: a31f35c915bf63a4f9231e54345aaabc
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: -8162489526127148127
     second: Vampire_6
+  - first:
+      213: 4427002241979389878
+    second: Vampire_7
+  - first:
+      213: -910715460555860394
+    second: Vampire_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -148,11 +154,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 29
+        y: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +175,12 @@ TextureImporter:
       name: Vampire_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 63
-        width: 19
-        height: 33
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +197,12 @@ TextureImporter:
       name: Vampire_2
       rect:
         serializedVersion: 2
-        x: 34
-        y: 32
-        width: 31
+        x: 64
+        y: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,12 +219,12 @@ TextureImporter:
       name: Vampire_3
       rect:
         serializedVersion: 2
-        x: 38
-        y: 63
-        width: 19
-        height: 33
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,12 +241,12 @@ TextureImporter:
       name: Vampire_4
       rect:
         serializedVersion: 2
-        x: 70
-        y: 63
-        width: 19
-        height: 33
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -257,12 +263,12 @@ TextureImporter:
       name: Vampire_5
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 19
-        height: 33
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -279,12 +285,12 @@ TextureImporter:
       name: Vampire_6
       rect:
         serializedVersion: 2
-        x: 70
-        y: 31
-        width: 19
-        height: 29
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -297,11 +303,77 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Vampire_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b71a05751fdf6d30800000000000000
+      internalID: 4427002241979389878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vampire_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6569c122d1d7c53f0800000000000000
+      internalID: -910715460555860394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Vampire_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1058cebe8e950724d9f34da133297012
+      internalID: -1542044865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b174ca2f0be2b8348b3439cd8f773023
     internalID: 0
     vertices: []
     indices: 
@@ -309,7 +381,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":4.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Vampire_0: -2904457877120967500
       Vampire_1: 2623676403181958527
@@ -318,6 +392,9 @@ TextureImporter:
       Vampire_4: 9016175878705727569
       Vampire_5: -6120878852613299399
       Vampire_6: -8162489526127148127
+      Vampire_7: 4427002241979389878
+      Vampire_8: -910715460555860394
+      Vampire_9: -1542044865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

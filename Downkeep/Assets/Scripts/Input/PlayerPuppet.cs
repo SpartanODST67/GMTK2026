@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static Constants;
 
@@ -23,6 +24,7 @@ public class PlayerPuppet : InputPuppet
 
     [SerializeField] WhipAttack whipAttack;
     [SerializeField] ChainhookAttack chainhookAttack;
+    [SerializeField] VampireAnimationHelper animationHelper;
 
     public override void MoveAction(Vector2 moveVector)
     {

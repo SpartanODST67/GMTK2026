@@ -1064,6 +1064,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   attackRange: 5
+  attackWidth: 0.5
   pogoStrength: 7.5
   numPogosBeforeDecay: 3
   maxCollidersHit: 5

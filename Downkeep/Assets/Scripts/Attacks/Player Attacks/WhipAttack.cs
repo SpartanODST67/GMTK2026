@@ -8,6 +8,7 @@ public class WhipAttack : Attack
 {
     [SerializeField] LayerMask attackLayers;
     [SerializeField] float attackRange;
+    [SerializeField] float attackWidth;
     [SerializeField] float pogoStrength = 2;
     [SerializeField] int numPogosBeforeDecay = 3;
     int pogosSinceLastGround = 0;
@@ -46,10 +47,12 @@ public class WhipAttack : Attack
             to.z = 0;
             Vector3 direction = to - from;
 
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
             Ray ray = new(transform.position, direction);
             Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.darkRed, 1f);    
-            var hits = Physics2D.RaycastAll(ray.origin, ray.direction, attackRange, attackLayers);
-
+            var hits = Physics2D.BoxCastAll(ray.origin, new Vector2(attackRange, attackWidth), angle, ray.direction.normalized, attackRange, attackLayers);
+            
             foreach(var hit in hits)
             {
                 if(alreadyHit.Contains(hit.collider.gameObject)) continue;

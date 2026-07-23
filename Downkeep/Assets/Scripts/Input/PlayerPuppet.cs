@@ -38,7 +38,8 @@ public class PlayerPuppet : InputPuppet
         }
         else
         {
-            rb.AddForce(moveVector.normalized * moveSpeed * inAirMoveSpeedMultiplier, ForceMode2D.Force);
+            moveVector.y = 0;
+            rb.AddForce(inAirMoveSpeedMultiplier * moveSpeed * moveVector.normalized, ForceMode2D.Force);
         }
     }
 

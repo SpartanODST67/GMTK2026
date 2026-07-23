@@ -51,7 +51,7 @@ public class WhipAttack : Attack
 
             Ray ray = new(transform.position, direction);
             Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.darkRed, 1f);    
-            var hits = Physics2D.BoxCastAll(ray.origin, new Vector2(attackRange, attackWidth), angle, ray.direction.normalized, attackRange, attackLayers);
+            var hits = Physics2D.BoxCastAll(ray.origin, new Vector2(attackRange, attackWidth) / 2, angle, ray.direction.normalized, attackRange, attackLayers);
             
             foreach(var hit in hits)
             {

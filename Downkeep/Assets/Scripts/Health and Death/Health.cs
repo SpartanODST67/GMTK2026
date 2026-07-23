@@ -34,6 +34,5 @@ public class Health : MonoBehaviour
     public virtual void Die()
     {
         bloodParticle.Play();
-        Debug.Log("Oof");
     }
 }

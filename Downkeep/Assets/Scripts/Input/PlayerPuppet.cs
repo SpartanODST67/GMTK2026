@@ -27,11 +27,17 @@ public class PlayerPuppet : InputPuppet
     public override void MoveAction(Vector2 moveVector)
     {
         if(!canMove) return;
-        if(moveVector.x == 0 && !isGrounded) return;
         if(moveVector.x > 0 && !canMoveRight) return;
         if(moveVector.x < 0 && !canMoveLeft) return;
 
-        rb.linearVelocityX = moveVector.normalized.x * (moveSpeed * (isGrounded ? 1 : inAirMoveSpeedMultiplier));    
+        if(isGrounded)
+        {
+            rb.linearVelocityX = moveVector.normalized.x * moveSpeed;            
+        }
+        else
+        {
+            rb.AddForce(moveVector.normalized * moveSpeed * inAirMoveSpeedMultiplier, ForceMode2D.Force);
+        }
     }
 
     public override void JumpAction()

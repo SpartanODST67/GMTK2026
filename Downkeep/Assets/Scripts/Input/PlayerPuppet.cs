@@ -4,10 +4,11 @@ public class PlayerPuppet : InputPuppet
 {
     [SerializeField] Rigidbody2D rb;
 
-    public bool Grounded { get => grounded; set => SetIsGrounded(value); }
-    [SerializeField] bool grounded = true;
+    public bool IsGrounded { get => isGrounded; set => SetIsGrounded(value); }
+    [SerializeField] bool isGrounded = true;
     [SerializeField] public bool canMoveLeft = true;
     [SerializeField] public bool canMoveRight = true;
+    public bool isBouncing = false;
     
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float inAirMoveSpeedMultiplier = 0.25f;
@@ -21,11 +22,12 @@ public class PlayerPuppet : InputPuppet
 
     public override void MoveAction(Vector2 moveVector)
     {
-        if(moveVector.x == 0 && !grounded) return;
+        if(isBouncing) return;
+        if(moveVector.x == 0 && !isGrounded) return;
         if(moveVector.x > 0 && !canMoveRight) return;
         if(moveVector.x < 0 && !canMoveLeft) return;
 
-        rb.linearVelocityX = moveVector.normalized.x * (moveSpeed * (grounded ? 1 : inAirMoveSpeedMultiplier));    
+        rb.linearVelocityX = moveVector.normalized.x * (moveSpeed * (isGrounded ? 1 : inAirMoveSpeedMultiplier));    
     }
 
     public override void JumpAction()
@@ -35,10 +37,10 @@ public class PlayerPuppet : InputPuppet
         if(rb.linearVelocityY < 0)
             rb.linearVelocityY = 0;
 
-        if(!grounded)
+        if(!isGrounded)
             curInAirJumps++;
 
-        rb.AddForce(Vector2.up * (jumpForce * (grounded ? 1 : inAirJumpForceMultiplier)), ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * (jumpForce * (isGrounded ? 1 : inAirJumpForceMultiplier)), ForceMode2D.Impulse);
     }
 
     public override void AltAttackAction()
@@ -63,9 +65,9 @@ public class PlayerPuppet : InputPuppet
 
     public void SetIsGrounded(bool grounded)
     {
-        this.grounded = grounded;
+        this.isGrounded = grounded;
 
-        if(this.grounded)
+        if(this.isGrounded)
         {
             SetCurInAirJumps(0);
         }

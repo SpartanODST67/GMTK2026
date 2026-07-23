@@ -13,9 +13,19 @@ public class ChainhookAttack : Attack
     public bool isHooked = false;
     public bool isCooldown = false;
     RaycastHit2D[] hits = new RaycastHit2D[1];
+    Vector3 hitPoint;
+    [SerializeField] ChainhookAttackSprite sprite;
 
     float gravScale = 1;
     float lineDamp = 1;
+
+    void Update()
+    {
+        if(isHooked)
+        {
+            sprite.ShowChain(transform.position, hitPoint);
+        }
+    }
 
     public override void PerformAttack()
     {
@@ -28,9 +38,8 @@ public class ChainhookAttack : Attack
         if(isCooldown) return;
 
         Vector3 from = transform.position;
-        Vector3 to = Cursor.Instance.transform.position;
-        to.z = 0;
-        Vector3 direction = to - from;
+        Vector3 to = Cursor.Instance.WorldPosition;
+        Vector3 direction = (to - from).normalized;
 
         Ray ray = new(transform.position, direction);
         Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.softRed, 1f);    
@@ -48,9 +57,9 @@ public class ChainhookAttack : Attack
             rb.linearDamping = 0;
 
             Vector3 origin = transform.position;
-            Vector3 dest = hits[0].point;
+            hitPoint = hits[0].point;
 
-            rb.linearVelocity = (dest - origin).normalized * pullSpeed;
+            rb.linearVelocity = (hitPoint - origin).normalized * pullSpeed;
         }
     }
 
@@ -68,6 +77,7 @@ public class ChainhookAttack : Attack
         isCooldown = true;
         Invoke(nameof(Cooldown), coolDownTime * (chainhooksSinceGrounded + 1));
 
+        sprite.HideChain();
         playerPuppet.canMove = true;
         rb.gravityScale = gravScale;
         rb.linearDamping = lineDamp;

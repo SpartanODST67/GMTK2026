@@ -36,6 +36,8 @@ public class PlayerPuppet : InputPuppet
 
     public override void JumpAction()
     {
+        if(chainhookAttack.isHooked) chainhookAttack.CancelAttack();
+
         if(curInAirJumps >= maxInAirJumps) return;
 
         if(rb.linearVelocityY < 0)

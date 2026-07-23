@@ -15,6 +15,8 @@ public class Cursor : MonoBehaviour
 
     [SerializeField] SerializableDictionary<CursorState, Sprite> cursorSprites;
     private Dictionary<CursorState, Sprite> spriteDict;
+
+    public Vector3 WorldPosition { get; private set; }
     
     [SerializeField] SpriteRenderer sprite;
     Camera cam;
@@ -30,6 +32,7 @@ public class Cursor : MonoBehaviour
     void Update()
     {
         Vector3 pointerPos = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        WorldPosition = pointerPos;
         pointerPos.z = -9;
         gameObject.transform.position = pointerPos;
     }

@@ -19,6 +19,7 @@ public class WhipAttack : Attack
     [SerializeField] int recoveryFrames = 3;
     public bool isAttacking = false;
     [SerializeField] PlayerBounce bounce;
+    [SerializeField] WhipAttackSprite sprite;
 
     Coroutine attackCoroutine;
 
@@ -34,56 +35,78 @@ public class WhipAttack : Attack
     {
         isAttacking = true;
 
-        Debug.Log("Winding up");
-        for(int i = 0; i < windupFrames; i++)
+        sprite.ShowCoiled();
+        for(int i = 0; i < windupFrames; i++) {
+            Vector2 direction = CalcAttackDirection();
+            float angle = CalcAttackAngle(direction);
+            sprite.transform.rotation = Quaternion.Euler(0, 0, angle);
             yield return new WaitForSeconds(SIXTY_FRAME);
-        
+        }
+
         bool hasBounced = false;
         HashSet<GameObject> alreadyHit = new();
+        sprite.ShowAttack();
         for(int i = 0; i < attackFrames; i++)
         {
-            Vector3 from = transform.position;
-            Vector3 to = Cursor.Instance.transform.position;
-            to.z = 0;
-            Vector3 direction = to - from;
+            Vector2 direction = CalcAttackDirection();   
+            float angle = CalcAttackAngle(direction);
+            sprite.transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            Ray ray = new(transform.position, direction);
-            Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.darkRed, 1f);    
-            var hits = Physics2D.BoxCastAll(ray.origin, new Vector2(attackRange, attackWidth) / 2, angle, ray.direction.normalized, attackRange, attackLayers);
+            Vector2 center = (Vector2)transform.position + direction * (attackRange * 0.5f);
+            Vector2 size = new(attackRange, attackWidth);
+            var hits = Physics2D.OverlapBoxAll(
+                center,
+                size,
+                angle,
+                attackLayers
+            );
             
             foreach(var hit in hits)
             {
-                if(alreadyHit.Contains(hit.collider.gameObject)) continue;
-                alreadyHit.Add(hit.collider.gameObject);
-                Debug.Log(hit.collider.gameObject);
+                if(alreadyHit.Contains(hit.gameObject)) continue;
+                alreadyHit.Add(hit.gameObject);
+                Debug.Log(hit.gameObject);
 
                 if(!hasBounced)
                 {
                     hasBounced = true;
-                    bounce.Bounce(-ray.direction.normalized * (pogoStrength / Math.Max(1, pogosSinceLastGround - (numPogosBeforeDecay - 1))));
+                    bounce.Bounce(-direction.normalized * (pogoStrength / Math.Max(1, pogosSinceLastGround - (numPogosBeforeDecay - 1))));
                     pogosSinceLastGround++;
                 }
 
-                if(hit.collider.gameObject.TryGetComponent(out Health hitHealth))
+                if(hit.gameObject.TryGetComponent(out Health hitHealth))
                     hitHealth.Hurt();
             }
 
             yield return new WaitForSeconds(SIXTY_FRAME);
         }
 
-        Debug.Log("Recovering");
+        sprite.ShowRecovery();
         for(int i = 0; i < recoveryFrames; i++)
             yield return new WaitForSeconds(SIXTY_FRAME);
 
-        Debug.Log("Recovered");
+        sprite.HideWhip();
         isAttacking = false;
+    }
+
+    private Vector2 CalcAttackDirection()
+    {
+        Vector3 from = transform.position;
+        Vector3 to = Cursor.Instance.WorldPosition;
+        Vector2 direction = to - from;
+
+        return direction.normalized;
+    }
+
+    private float CalcAttackAngle(Vector2 direction)
+    {
+        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
     public override void CancelAttack()
     {
         isAttacking = false;
+        sprite.HideWhip();
         if(attackCoroutine != null) StopCoroutine(attackCoroutine);
     }
 

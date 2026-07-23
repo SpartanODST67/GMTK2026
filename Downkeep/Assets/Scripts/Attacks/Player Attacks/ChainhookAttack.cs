@@ -18,12 +18,23 @@ public class ChainhookAttack : Attack
 
     float gravScale = 1;
     float lineDamp = 1;
+    Vector2 expectedVelocity;
 
     void Update()
     {
         if(isHooked)
         {
             sprite.ShowChain(transform.position, hitPoint);
+
+            if(rb.linearVelocity != expectedVelocity) CancelAttack();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(isHooked)
+        {
+            if(rb.linearVelocity != expectedVelocity) CancelAttack();
         }
     }
 
@@ -59,7 +70,8 @@ public class ChainhookAttack : Attack
             Vector3 origin = transform.position;
             hitPoint = hits[0].point;
 
-            rb.linearVelocity = (hitPoint - origin).normalized * pullSpeed;
+            expectedVelocity = (hitPoint - origin).normalized * pullSpeed;
+            rb.linearVelocity = expectedVelocity;
         }
     }
 

@@ -70,7 +70,7 @@ public class WhipAttack : Attack
                 if(!hasBounced)
                 {
                     hasBounced = true;
-                    bounce.Bounce(-direction.normalized * (pogoStrength / Math.Max(1, pogosSinceLastGround - (numPogosBeforeDecay - 1))));
+                    bounce.Bounce(-direction.normalized * pogoStrength);
                     pogosSinceLastGround++;
                 }
 

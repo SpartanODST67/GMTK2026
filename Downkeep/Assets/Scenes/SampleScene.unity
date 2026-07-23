@@ -1491,6 +1491,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1382121424501129123, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
+      propertyPath: pogoStrength
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382121424501129123, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
+      propertyPath: numPogosBeforeDecay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1392428734501779333, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747488521619351705, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747488521619351705, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3395239157176721234, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.39
@@ -1530,6 +1550,10 @@ PrefabInstance:
     - target: {fileID: 3395239157176721234, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5000419217168307296, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
+      propertyPath: bounceForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8039839735050902556, guid: f9c424b6767ff3149a136b72e5a4d14e, type: 3}
       propertyPath: m_Name

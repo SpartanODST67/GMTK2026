@@ -970,6 +970,10 @@ MonoBehaviour:
   maxHealth: 3
   curHealth: 3
   bloodParticle: {fileID: 1131301337312538597}
+  sprite: {fileID: 8624122834835797065}
+  invicibilityFrames: 10
+  bounce: {fileID: 6197814065615260897}
+  bounceForce: 5
 --- !u!114 &1292405525598748898
 MonoBehaviour:
   m_ObjectHideFlags: 0

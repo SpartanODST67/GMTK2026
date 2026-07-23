@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Constants;
 
 public class PlayerPuppet : InputPuppet
 {
@@ -6,6 +7,8 @@ public class PlayerPuppet : InputPuppet
 
     public bool IsGrounded { get => isGrounded; set => SetIsGrounded(value); }
     [SerializeField] bool isGrounded = true;
+    [SerializeField] bool isCoyoteTime = true;
+    [SerializeField] float coyoteTime = SIXTY_FRAME * 3;
     [SerializeField] public bool canMoveLeft = true;
     [SerializeField] public bool canMoveRight = true;
     public bool canMove = true;
@@ -16,7 +19,7 @@ public class PlayerPuppet : InputPuppet
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float inAirJumpForceMultiplier = 0.5f;
     [SerializeField] int maxInAirJumps = 1;
-    private int curInAirJumps = 0;
+    public int curInAirJumps = 0;
 
     [SerializeField] WhipAttack whipAttack;
     [SerializeField] ChainhookAttack chainhookAttack;
@@ -38,9 +41,10 @@ public class PlayerPuppet : InputPuppet
         if(rb.linearVelocityY < 0)
             rb.linearVelocityY = 0;
 
-        if(!isGrounded)
+        if(!isGrounded && !isCoyoteTime)
             curInAirJumps++;
 
+        isCoyoteTime = false;
         rb.AddForce(Vector2.up * (jumpForce * (isGrounded ? 1 : inAirJumpForceMultiplier)), ForceMode2D.Impulse);
     }
 
@@ -72,7 +76,19 @@ public class PlayerPuppet : InputPuppet
 
         if(isGrounded)
         {
+            CancelInvoke();
+            isCoyoteTime = true;
             SetCurInAirJumps(0);
         }
+
+        if(!isGrounded)
+        {
+            Invoke(nameof(CoyoteTime), coyoteTime);
+        }
+    }
+
+    private void CoyoteTime()
+    {
+        isCoyoteTime = false;        
     }
 }

@@ -39,7 +39,7 @@ public class Cursor : MonoBehaviour
         gameObject.transform.position = pointerPos;
 
         var rotation = sprite.gameObject.transform.rotation.eulerAngles;
-        rotation.z += spinSpeed * Time.deltaTime % 360;
+        rotation.z += spinSpeed * Time.unscaledDeltaTime % 360;
         sprite.gameObject.transform.rotation = Quaternion.Euler(rotation);
     }
 

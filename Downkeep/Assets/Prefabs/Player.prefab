@@ -987,7 +987,7 @@ MonoBehaviour:
     m_Bits: 72
   attackRange: 5
   attackWidth: 0.25
-  pogoStrength: 15
+  pogoStrength: 10
   numPogosBeforeDecay: 5
   maxCollidersHit: 5
   windupFrames: 12

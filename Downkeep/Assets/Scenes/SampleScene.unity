@@ -3144,7 +3144,19 @@ MonoBehaviour:
   bloodParticle: {fileID: 26812649}
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 469510050}
+        m_TargetAssemblyTypeName: VampireHunterBrain, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   pointsForKill: 100
   scoreName: John
 --- !u!114 &469510050
@@ -3165,12 +3177,14 @@ MonoBehaviour:
   randomizeDirection: 0
   edgeDetection: {fileID: 179733922}
   wallDetection: {fileID: 1519667949}
+  rbCollider: {fileID: 469510047}
   walkTimeRange: {x: 3, y: 5}
   aimTime: 2
   attackRecoveryTime: 3
   state: 0
   crossbowObject: {fileID: 1434724908}
   arrowPrefab: {fileID: 3649627772743692868, guid: 2823f3e56fb1e5a488932ba4149df127, type: 3}
+  sprite: {fileID: 1868236255}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

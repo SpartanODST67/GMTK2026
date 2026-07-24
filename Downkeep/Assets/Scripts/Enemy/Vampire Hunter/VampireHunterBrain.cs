@@ -15,6 +15,7 @@ public class VampireHunterBrain : MonoBehaviour
     [SerializeField] bool randomizeDirection = true;
     [SerializeField] BoxCollider2D edgeDetection;
     [SerializeField] BoxCollider2D wallDetection;
+    [SerializeField] BoxCollider2D rbCollider;
 
     [SerializeField] Vector2 walkTimeRange;
     float walkTime = 0;
@@ -28,6 +29,10 @@ public class VampireHunterBrain : MonoBehaviour
     float firingAngle;
     [SerializeField] GameObject arrowPrefab;
 
+    [SerializeField] SpriteRenderer sprite;
+
+    bool isDead = false;
+
     void Start()
     {
         if(randomizeDirection)
@@ -38,6 +43,8 @@ public class VampireHunterBrain : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(isDead) return;
+
         switch(state)
         {
             default:
@@ -60,6 +67,16 @@ public class VampireHunterBrain : MonoBehaviour
         direction *= -1;
         edgeDetection.offset = new Vector2(-edgeDetection.offset.x, edgeDetection.offset.y);
         wallDetection.offset = new Vector2(-wallDetection.offset.x, wallDetection.offset.y);
+    }
+
+    public void Die()
+    {
+        isDead = true;
+        crossbowObject.SetActive(false);
+        rbCollider.enabled = false;
+        edgeDetection.enabled = false;
+        wallDetection.enabled = false;
+        sprite.enabled = false;
     }
 
     private void EvaluateStateTime()

@@ -694,7 +694,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   pointsForKill: 100
-  scoreName: John
+  scoreName: Vampire Hunter
 --- !u!114 &2379521877186828737
 MonoBehaviour:
   m_ObjectHideFlags: 0

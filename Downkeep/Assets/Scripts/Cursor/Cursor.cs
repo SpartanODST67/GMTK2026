@@ -21,6 +21,8 @@ public class Cursor : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     Camera cam;
 
+    [SerializeField] float spinSpeed;
+
     void Awake()
     {
         Instance = this;
@@ -35,6 +37,10 @@ public class Cursor : MonoBehaviour
         WorldPosition = pointerPos;
         pointerPos.z = -9;
         gameObject.transform.position = pointerPos;
+
+        var rotation = sprite.gameObject.transform.rotation.eulerAngles;
+        rotation.z += spinSpeed * Time.deltaTime % 360;
+        sprite.gameObject.transform.rotation = Quaternion.Euler(rotation);
     }
 
     public void SetCursorState(CursorState state)

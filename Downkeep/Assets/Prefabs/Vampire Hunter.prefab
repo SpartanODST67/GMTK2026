@@ -708,15 +708,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VampireHunterBrain
   rb: {fileID: 971182968727600765}
-  walkSpeed: 2
+  walkSpeed: 3
   direction: 1
   randomizeDirection: 0
   edgeDetection: {fileID: 6688850037186147953}
   wallDetection: {fileID: 9145326333137961427}
   rbCollider: {fileID: 6674879139577551731}
-  walkTimeRange: {x: 3, y: 5}
-  aimTime: 2
-  attackRecoveryTime: 3
+  walkTimeRange: {x: 2, y: 4}
+  aimTime: 1
+  attackRecoveryTime: 2
   state: 0
   crossbowObject: {fileID: 4297990754397261502}
   arrowPrefab: {fileID: 3649627772743692868, guid: 2823f3e56fb1e5a488932ba4149df127, type: 3}

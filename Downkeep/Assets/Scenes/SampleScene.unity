@@ -3165,6 +3165,10 @@ MonoBehaviour:
   randomizeDirection: 0
   edgeDetection: {fileID: 179733922}
   wallDetection: {fileID: 1519667949}
+  walkTimeRange: {x: 3, y: 5}
+  aimTime: 2
+  attackRecoveryTime: 3
+  state: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

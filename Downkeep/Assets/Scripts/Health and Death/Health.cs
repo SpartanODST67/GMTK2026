@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     public virtual void Hurt()
     {
         curHealth--;
-        bloodParticle.Play();
+        if(bloodParticle != null) bloodParticle.Play();
         if(curHealth <= 0)
         {
             Die();
@@ -33,6 +33,6 @@ public class Health : MonoBehaviour
 
     public virtual void Die()
     {
-        bloodParticle.Play();
+        if(bloodParticle != null) bloodParticle.Play();
     }
 }

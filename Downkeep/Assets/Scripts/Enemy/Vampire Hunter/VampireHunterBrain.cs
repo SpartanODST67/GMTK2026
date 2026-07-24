@@ -24,6 +24,10 @@ public class VampireHunterBrain : MonoBehaviour
     [SerializeField] VampireHunterState state;
     float timeInState = 0;
 
+    [SerializeField] GameObject crossbowObject;
+    float firingAngle;
+    [SerializeField] GameObject arrowPrefab;
+
     void Start()
     {
         if(randomizeDirection)
@@ -32,7 +36,7 @@ public class VampireHunterBrain : MonoBehaviour
         walkTime = Random.Range(walkTimeRange.x, walkTimeRange.y);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         switch(state)
         {
@@ -60,7 +64,7 @@ public class VampireHunterBrain : MonoBehaviour
 
     private void EvaluateStateTime()
     {
-        timeInState += Time.deltaTime;
+        timeInState += Time.fixedDeltaTime;
 
         float expectedTime = state switch
         {
@@ -97,17 +101,27 @@ public class VampireHunterBrain : MonoBehaviour
     private void AimWeaponState()
     {
         rb.linearVelocityX = 0;
-        Debug.Log("Aiming");
+        crossbowObject.SetActive(true);
+
+        Vector3 from = transform.position;
+        Vector3 to = PlayerTracker.Instance.gameObject.transform.position;
+        Vector2 direction = to - from;
+        direction = direction.normalized;
+
+        firingAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        crossbowObject.transform.rotation = Quaternion.Euler(0, 0, firingAngle);
     }
 
     private void Shoot()
     {
+        Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, firingAngle));
         Debug.Log("Bang");
     }
 
     private void RecoverState()
     {
         rb.linearVelocityX = 0;
+        crossbowObject.SetActive(false);
         Debug.Log("Recovering");
     }
 }

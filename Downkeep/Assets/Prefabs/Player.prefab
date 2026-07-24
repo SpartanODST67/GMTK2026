@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 5679408708252971965}
   - component: {fileID: 5799600963936515307}
   - component: {fileID: 2259948778498585408}
+  - component: {fileID: 630668059768421380}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1092,6 +1093,18 @@ MonoBehaviour:
   rb: {fileID: 2747488521619351705}
   sprite: {fileID: 8624122834835797065}
   animator: {fileID: 5799600963936515307}
+--- !u!114 &630668059768421380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039839735050902556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eac8e682d0af1947ab6bf68b49dca1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTracker
 --- !u!1 &8442253335106961915
 GameObject:
   m_ObjectHideFlags: 0

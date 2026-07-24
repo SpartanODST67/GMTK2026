@@ -3856,6 +3856,13 @@ MonoBehaviour:
       - {fileID: 2998357511517583219, guid: 8eabae7a51d7e7047bf8a89ab1e27833, type: 3}
       - {fileID: 2998357511517583219, guid: 535ee208eafd574489f94ac0c2fce566, type: 3}
       - {fileID: 2998357511517583219, guid: 32ab6a870c4f695419f501deb45af346, type: 3}
+    - key: 1
+      value:
+      - {fileID: 2998357511517583219, guid: 95cefccd0a56096498d17e5240e21bff, type: 3}
+    - key: 2
+      value:
+      - {fileID: 2998357511517583219, guid: 4af0c1db8a41eeb499229b4eb7b7aceb, type: 3}
+      - {fileID: 2998357511517583219, guid: e9bafae919fcd2545b299303ac370318, type: 3}
   maxFloorsGenerated: 5
   initialFloorsGenerated: 3
   nextFloorPosition: {x: 0, y: -6, z: 10}

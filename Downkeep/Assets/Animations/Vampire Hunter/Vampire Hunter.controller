@@ -125,7 +125,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d2fcecf2cb355974798d00c8da01b891, type: 2}
+  m_Motion: {fileID: 7400000, guid: acad73b9021c2804fa9b84b51921009f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -153,7 +153,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f2ce824a4fba16f49ab25fd109c4174e, type: 2}
+  m_Motion: {fileID: 7400000, guid: f823fc09fd40da141a93b9c080653f0e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -165,7 +165,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Vampire
+  m_Name: Vampire Hunter
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: horizontalVelocity
@@ -255,7 +255,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7963f99c57ebb2044b15d395675ac527, type: 2}
+  m_Motion: {fileID: 7400000, guid: 42f7fddb2b816b24e977be958114ab88, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

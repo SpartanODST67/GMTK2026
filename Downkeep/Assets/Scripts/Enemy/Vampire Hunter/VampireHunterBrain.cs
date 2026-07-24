@@ -30,7 +30,8 @@ public class VampireHunterBrain : MonoBehaviour
     [SerializeField] GameObject arrowPrefab;
 
     [SerializeField] SpriteRenderer sprite;
-
+    public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
+    bool isGrounded = true;
     bool isDead = false;
 
     void Start()

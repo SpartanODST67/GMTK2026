@@ -16,7 +16,9 @@ public class Scorekeeper : MonoBehaviour
         
         Score += score;
 
-        if(msg != null)
-            NotificationManager.Instance.Notification($"<color=green>{(score > 0 ? "+" : "")}{score}</color> for: {msg}");
+        if(msg != null) {
+            string color = score >= 0 ? "green" : "red";
+            NotificationManager.Instance.Notification($"<color={color}>{(score > 0 ? "+" : "")}{score}</color> for: {msg}.");
+        }
     }
 }

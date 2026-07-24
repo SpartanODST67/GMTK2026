@@ -5,7 +5,8 @@ enum PowerupType
 {
     Health,
     BonusHealth,
-    JumpBoost
+    JumpBoost,
+    Garlic
 }
 
 public class Powerup : MonoBehaviour
@@ -22,11 +23,12 @@ public class Powerup : MonoBehaviour
 
     void Start()
     {
-        type = Random.Range(0, 3) switch
+        type = Random.Range(0, 4) switch
         {
             0 => PowerupType.Health,
             1 => PowerupType.JumpBoost,
             2 => PowerupType.BonusHealth,
+            3 => PowerupType.Garlic,
             _ => PowerupType.JumpBoost
         };
 
@@ -43,6 +45,9 @@ public class Powerup : MonoBehaviour
             case PowerupType.BonusHealth:
                 BonusHealthPowerUp(collision);
                 break;
+            case PowerupType.Garlic:
+                GarlicPowerUp(collision);
+                break;
             default:
             case PowerupType.JumpBoost:
                 JumpBoostPowerUp(collision);
@@ -56,6 +61,7 @@ public class Powerup : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out PlayerHealth health))
         {
+            NotificationManager.Instance.Notification("<color=green>Yum!</color> Feeling better now!");
             health.Heal();
         }        
     }
@@ -64,7 +70,18 @@ public class Powerup : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out PlayerHealth health))
         {
+            NotificationManager.Instance.Notification("<color=green>Scrumptious!</color> Feeling even stronger!");
             health.AddMaxHealth(1);
+        }        
+    }
+
+    private void GarlicPowerUp(Collider2D collision)
+    {
+        if(collision.gameObject.TryGetComponent(out PlayerHealth health))
+        {
+            NotificationManager.Instance.Notification("<color=red>Yuck!</color> Why did I eat that?");
+            Scorekeeper.Instance.AddScore(-10, "Eating <color=red>Garlic</color>");
+            health.Hurt();
         }        
     }
 
@@ -72,6 +89,7 @@ public class Powerup : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out PlayerPuppet player))
         {
+            NotificationManager.Instance.Notification("<color=green>Friends!</color> They've come to assist me!");
             player.maxInAirJumps++;
         }
     }

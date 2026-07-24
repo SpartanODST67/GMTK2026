@@ -2645,6 +2645,8 @@ MonoBehaviour:
       value: {fileID: 8676132410866927105, guid: 90cc35314e62ed04d95c275c7e64d104, type: 3}
     - key: 1
       value: {fileID: 4606908045521496030, guid: 86de899988d238f48acc7b1906f87d9f, type: 3}
+    - key: 3
+      value: {fileID: -912498489993581376, guid: a4727e65b4087f64b958d253a88e8bd9, type: 3}
   sprite: {fileID: 773388124}
 --- !u!212 &773388124
 SpriteRenderer:

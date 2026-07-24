@@ -14,7 +14,7 @@ public class DepthTracker : MonoBehaviour
     {
         if(transform.position.y > startPoint.y || Mathf.Approximately(transform.position.y, startPoint.y)) return 0f;
 
-        return (transform.position - startPoint).magnitude;
+        return Mathf.Abs(transform.position.y - startPoint.y);
     }
 
     public void RecordDepthScore()

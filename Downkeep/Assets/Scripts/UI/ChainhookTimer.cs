@@ -20,8 +20,10 @@ public class ChainhookTimer : MonoBehaviour
         if(countDownTime > 0)
         {
             countDownTime -= Time.deltaTime;
-            countDownTime = (float) Math.Round(countDownTime, 2);
-            text.text = countDownTime.ToString();
+            if(countDownTime <= 0)
+                text.text = "0.0";
+            else
+                text.text = countDownTime.ToString("F2");
         }
     }
 

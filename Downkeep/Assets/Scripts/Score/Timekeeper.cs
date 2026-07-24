@@ -2,8 +2,15 @@ using UnityEngine;
 
 public class Timekeeper : MonoBehaviour
 {
+    public static Timekeeper Instance { get; private set;}
+
     public double Time { get; private set; }
     private bool isRecording = true;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

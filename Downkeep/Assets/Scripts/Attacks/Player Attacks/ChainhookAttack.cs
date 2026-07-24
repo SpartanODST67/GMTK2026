@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ public class ChainhookAttack : Attack
     float gravScale = 1;
     float lineDamp = 1;
     Vector2 expectedVelocity;
+    Coroutine cooldownTimer;
 
     void Update()
     {
@@ -87,17 +89,31 @@ public class ChainhookAttack : Attack
         isHooked = false;
 
         isCooldown = true;
-        Invoke(nameof(Cooldown), coolDownTime * (chainhooksSinceGrounded + 1));
-
+        float coolTime = coolDownTime * (chainhooksSinceGrounded + 1);
+        ChainhookTimer.Instance.ChainhookCooldown(coolTime);
+        cooldownTimer = StartCoroutine(CooldownTime(coolTime));
+        
         sprite.HideChain();
         playerPuppet.canMove = true;
         rb.gravityScale = gravScale;
         rb.linearDamping = lineDamp;
     }
 
+    IEnumerator CooldownTime(float coolTime)
+    {
+        while(coolTime > 0)
+        {
+            coolTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        Cooldown();
+    }
+
     public void Cooldown()
     {
-        CancelInvoke();
+        if(cooldownTimer != null) StopCoroutine(cooldownTimer);
+        ChainhookTimer.Instance.ChainhookActive();
         isCooldown = false;
     }
 

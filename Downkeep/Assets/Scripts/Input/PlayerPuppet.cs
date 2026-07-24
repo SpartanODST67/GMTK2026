@@ -19,7 +19,7 @@ public class PlayerPuppet : InputPuppet
 
     [SerializeField] float jumpForce = 5f;
     [SerializeField] float inAirJumpForceMultiplier = 0.5f;
-    [SerializeField] int maxInAirJumps = 1;
+    [SerializeField] public int maxInAirJumps = 1;
     public int curInAirJumps = 0;
 
     [SerializeField] WhipAttack whipAttack;

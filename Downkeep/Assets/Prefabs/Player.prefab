@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9aa46937131b842b63453ad4a3551c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DepthTracker
-  denominator: 1000
+  denominator: 10
 --- !u!114 &5679408708252971965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a451b3c033b98e4095d5ab93b6affd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FallTracker
-  denominator: 10
+  denominator: 0.1
 --- !u!95 &5799600963936515307
 Animator:
   serializedVersion: 7

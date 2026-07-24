@@ -27,7 +27,7 @@ public class AirTimeTracker : MonoBehaviour
                 NotificationManager.Instance.Notification($"<color=yellow>Best airtime!</color> (Was <color=red>{bestAirTime:F2}</color>. Now <color=green>{inAirTime:F2}</color>)");
             }
 
-            if(inAirTime >= minAirTime) Scorekeeper.Instance.AddScore((int) inAirTime, $"Airtime of <color=green>{inAirTime:F2}</color>");
+            if(inAirTime >= minAirTime) Scorekeeper.Instance.AddScore((int) inAirTime * 10, $"Airtime of <color=green>{inAirTime:F2}</color>");
         }
 
         this.isInAir = isInAir;

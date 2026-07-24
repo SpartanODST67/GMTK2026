@@ -25,11 +25,11 @@ public class FallTracker : MonoBehaviour
         float distance = GetFallDistance();
         int fallScore = (int)(Mathf.Pow(distance, 2f) / denominator); 
 
-        Scorekeeper.Instance.AddScore(fallScore, $"Fell {distance}");
+        Scorekeeper.Instance.AddScore(fallScore, $"Fell <color=green>{distance}</color>");
 
         if(distance > bestFall)
         {
-            Debug.Log($"Beat best fall! Was {bestFall}. Now {distance}");
+            NotificationManager.Instance.Notification($"<color=yellow>Best fall!</color> (Was <color=red>{bestFall:F2}</color>. Now <color=green>{distance}</color>).");
             bestFall = distance;
         }
     }

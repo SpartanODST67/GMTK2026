@@ -14,6 +14,6 @@ public class EnemyHealth : Health
     {
         base.Die();
         onDeath.Invoke();
-        Scorekeeper.Instance.AddScore(pointsForKill, $"Slayed {scoreName}");
+        Scorekeeper.Instance.AddScore(pointsForKill, $"<color=red>{scoreName} Slain</color>");
     }
 }

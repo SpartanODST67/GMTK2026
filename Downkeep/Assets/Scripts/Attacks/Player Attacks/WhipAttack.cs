@@ -65,7 +65,6 @@ public class WhipAttack : Attack
             {
                 if(alreadyHit.Contains(hit.gameObject)) continue;
                 alreadyHit.Add(hit.gameObject);
-                Debug.Log(hit.gameObject);
 
                 if(!hasBounced)
                 {

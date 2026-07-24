@@ -133,13 +133,11 @@ public class VampireHunterBrain : MonoBehaviour
     private void Shoot()
     {
         Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, firingAngle));
-        Debug.Log("Bang");
     }
 
     private void RecoverState()
     {
         rb.linearVelocityX = 0;
         crossbowObject.SetActive(false);
-        Debug.Log("Recovering");
     }
 }

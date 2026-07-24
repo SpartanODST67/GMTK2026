@@ -21,13 +21,13 @@ public class AirTimeTracker : MonoBehaviour
     {
         if(this.isInAir && !isInAir )
         {
-            if(inAirTime >= bestAirTime)
+            if(inAirTime >= bestAirTime && !Mathf.Approximately(inAirTime, bestAirTime))
             {
                 bestAirTime = inAirTime;
-                Debug.Log($"Beat best airtime! Was {bestAirTime}. Now {inAirTime}");
+                NotificationManager.Instance.Notification($"<color=yellow>Best airtime!</color> (Was <color=red>{bestAirTime:F2}</color>. Now <color=green>{inAirTime:F2}</color>)");
             }
 
-            if(inAirTime >= minAirTime) Scorekeeper.Instance.AddScore((int) inAirTime, $"Airtime: {Math.Round(inAirTime, 2)}");
+            if(inAirTime >= minAirTime) Scorekeeper.Instance.AddScore((int) inAirTime, $"Airtime of <color=green>{inAirTime:F2}</color>");
         }
 
         this.isInAir = isInAir;

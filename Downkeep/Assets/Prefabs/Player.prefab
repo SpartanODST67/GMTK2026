@@ -949,7 +949,7 @@ MonoBehaviour:
   canMove: 1
   moveSpeed: 5
   inAirMoveSpeedMultiplier: 2
-  jumpForce: 15
+  jumpForce: 10
   inAirJumpForceMultiplier: 1
   maxInAirJumps: 1
   curInAirJumps: 0

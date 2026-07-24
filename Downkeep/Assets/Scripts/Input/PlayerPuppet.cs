@@ -55,6 +55,7 @@ public class PlayerPuppet : InputPuppet
         if(!isGrounded && !isCoyoteTime) {
             bats.Play();
             curInAirJumps++;
+            rb.linearVelocity = Vector2.zero;
         }
 
         isCoyoteTime = false;

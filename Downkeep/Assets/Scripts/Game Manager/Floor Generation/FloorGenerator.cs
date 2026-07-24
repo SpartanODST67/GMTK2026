@@ -53,7 +53,8 @@ public class FloorGenerator : MonoBehaviour
             floorPool = floorsPerLevelDict[0];
         } else
         {
-            floorPool = floorsPerLevelDict[Math.Max(UnityEngine.Random.Range(0, totalGeneratedFloors + 1), floorsPerLevelDict.Keys.Count)];
+            int upperBound = Math.Min(totalGeneratedFloors + 1, floorsPerLevelDict.Keys.Count);
+            floorPool = floorsPerLevelDict[UnityEngine.Random.Range(0, upperBound)];
         }
 
         GameObject chosenFloor = floorPool[UnityEngine.Random.Range(0, floorPool.Count)];

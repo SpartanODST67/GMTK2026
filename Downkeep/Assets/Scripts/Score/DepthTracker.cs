@@ -22,6 +22,6 @@ public class DepthTracker : MonoBehaviour
         float depth = GetDepth();
         int depthScore = (int)(Mathf.Pow(depth, 2f) / denominator); 
 
-        Scorekeeper.Instance.AddScore(depthScore, $"Reached a depth of {depth}");
+        Scorekeeper.Instance.AddScore(depthScore, $"Reached a depth of <color=green>{depth:F2}</color>");
     }
 }

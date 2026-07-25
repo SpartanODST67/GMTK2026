@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using static Constants;
 
 public class PlayerHealth : Health
@@ -10,6 +10,7 @@ public class PlayerHealth : Health
     [SerializeField] PlayerBounce bounce;
     [SerializeField] float bounceForce;
     bool isInvincible = false;
+    public UnityEvent onDeath;
 
     public void Hurt(Vector3 forceDirection)
     {
@@ -37,5 +38,11 @@ public class PlayerHealth : Health
 
         sprite.enabled = true;
         isInvincible = false;
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        onDeath.Invoke();
     }
 }

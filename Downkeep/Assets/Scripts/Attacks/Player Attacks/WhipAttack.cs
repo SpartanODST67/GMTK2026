@@ -20,6 +20,7 @@ public class WhipAttack : Attack
     public bool isAttacking = false;
     [SerializeField] PlayerBounce bounce;
     [SerializeField] WhipAttackSprite sprite;
+    [SerializeField] PitchShiftAudio whipSound;
 
     Coroutine attackCoroutine;
 
@@ -46,6 +47,7 @@ public class WhipAttack : Attack
         bool hasBounced = false;
         HashSet<GameObject> alreadyHit = new();
         sprite.ShowAttack();
+        whipSound.Play();
         for(int i = 0; i < attackFrames; i++)
         {
             Vector2 direction = CalcAttackDirection();   

@@ -116,6 +116,49 @@ MonoBehaviour:
     - key: 3
       value: {fileID: -912498489993581376, guid: a4727e65b4087f64b958d253a88e8bd9, type: 3}
   sprite: {fileID: 2071733966636455317}
+  powerupChance: 100
+  bobCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.52318805
+      outSlope: 0.52318805
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.7200001
+    - serializedVersion: 3
+      time: 0.25
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.75
+      value: -0.1
+      inSlope: 0.0038078884
+      outSlope: 0.0038078884
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.56640476
+      outSlope: 0.56640476
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.72
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!61 &4721798201666916714
 BoxCollider2D:
   m_ObjectHideFlags: 0

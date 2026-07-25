@@ -16,10 +16,14 @@ public class Powerup : MonoBehaviour
     Dictionary<PowerupType, Sprite> powerupSpritesDict;
     PowerupType type;
     [SerializeField] int powerupChance = 100;
+    [SerializeField] AnimationCurve bobCurve;
+    float time = 0;
+    Vector3 startPosition;
 
     void Awake()
     {
         if(Random.Range(0, 100) >= powerupChance) Destroy(gameObject);
+        startPosition = transform.position;
         powerupSpritesDict = powerupSprites.ToDict();
     }
 
@@ -35,6 +39,16 @@ public class Powerup : MonoBehaviour
         };
 
         sprite.sprite = powerupSpritesDict[type];
+    }
+
+    void Update()
+    {
+        time += Time.deltaTime;
+        time %= bobCurve.keys[^1].time;
+        
+        var pos = startPosition;
+        pos.y += bobCurve.Evaluate(time);
+        transform.position = pos;
     }
 
     void OnTriggerEnter2D(Collider2D collision)

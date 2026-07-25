@@ -1,0 +1,1 @@
+Hopeless Lithromantic and Throne of the Soul created by Nihilore: https://www.nihilore.com/license. No changes made to used audio assets.

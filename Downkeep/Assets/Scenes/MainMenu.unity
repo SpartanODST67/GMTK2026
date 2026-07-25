@@ -1771,6 +1771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1889045502}
   - component: {fileID: 1889045503}
+  - component: {fileID: 1889045504}
   m_Layer: 0
   m_Name: Jukebox
   m_TagString: Untagged
@@ -1890,6 +1891,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1889045504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889045501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad61347918b57fe4f8dbe97bea2f185d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Jukebox
+  audioSource: {fileID: 1889045503}
 --- !u!1 &2048281062
 GameObject:
   m_ObjectHideFlags: 0

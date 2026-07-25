@@ -7,11 +7,6 @@ public class DeathBox : MonoBehaviour
     [SerializeField] float maxDistance = 40f;
     bool isMoving = false;
 
-    void Start()
-    {
-        StartMoving();
-    }
-
     void FixedUpdate()
     {
         if(isMoving)

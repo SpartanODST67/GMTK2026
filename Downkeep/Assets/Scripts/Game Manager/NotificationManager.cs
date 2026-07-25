@@ -7,6 +7,8 @@ public class NotificationManager : MonoBehaviour
     [SerializeField] Notifications uiComponent;
     LinkedList<string> notifications = new();
     [SerializeField] int maxNotifications = 5;
+    public bool AllowNotifications { get => allowNotifications; set => allowNotifications = value; }
+    public bool allowNotifications;
 
     void Awake()
     {
@@ -15,6 +17,8 @@ public class NotificationManager : MonoBehaviour
 
     public void Notification(string msg)
     {
+        if(!allowNotifications) return;
+
         if(notifications.Count > maxNotifications)
         {
             notifications.RemoveFirst();

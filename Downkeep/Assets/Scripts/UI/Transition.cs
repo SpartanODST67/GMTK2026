@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using static Constants;
 
 public class Transition : MonoBehaviour
 {
@@ -24,7 +26,12 @@ public class Transition : MonoBehaviour
         StartCoroutine(SlideRoutine(start, end, onComplete));
     }
 
-    IEnumerator SlideRoutine(Vector3 start, Vector3 position, UnityEvent onComplete)
+    public void Slide(Vector3 start, Vector3 end, Action onComplete)
+    {
+        StartCoroutine(SlideRoutine(start, end, default, onComplete));
+    }
+
+    IEnumerator SlideRoutine(Vector3 start, Vector3 position, UnityEvent onCompleteUnityEvent = null, Action onCompleteCallback = null)
     {
         rectTransform.anchoredPosition = start;
 
@@ -39,10 +46,11 @@ public class Transition : MonoBehaviour
                 speed
             );
 
-            yield return null;
+            yield return new WaitForSecondsRealtime(SIXTY_FRAME);
         }
 
         rectTransform.anchoredPosition = position;
-        onComplete.Invoke();
+        onCompleteUnityEvent?.Invoke();
+        onCompleteCallback?.Invoke();
     }
 }

@@ -16,6 +16,7 @@ public class ChainhookAttack : Attack
     RaycastHit2D[] hits = new RaycastHit2D[1];
     Vector3 hitPoint;
     [SerializeField] ChainhookAttackSprite sprite;
+    [SerializeField] AudioSource pullSound;
 
     float gravScale = 1;
     float lineDamp = 1;
@@ -71,7 +72,8 @@ public class ChainhookAttack : Attack
 
             Vector3 origin = transform.position;
             hitPoint = hits[0].point;
-
+            
+            pullSound.Play();
             expectedVelocity = (hitPoint - origin).normalized * pullSpeed;
             rb.linearVelocity = expectedVelocity;
         }
@@ -93,6 +95,7 @@ public class ChainhookAttack : Attack
         ChainhookTimer.Instance.ChainhookCooldown(coolTime);
         cooldownTimer = StartCoroutine(CooldownTime(coolTime));
         
+        pullSound.Stop();
         sprite.HideChain();
         playerPuppet.canMove = true;
         rb.gravityScale = gravScale;

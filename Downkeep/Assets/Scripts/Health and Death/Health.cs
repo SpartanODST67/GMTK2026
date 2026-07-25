@@ -33,6 +33,7 @@ public class Health : MonoBehaviour
 
     public virtual void Die()
     {
+        curHealth = 0;
         if(bloodParticle != null) bloodParticle.Play();
     }
 }

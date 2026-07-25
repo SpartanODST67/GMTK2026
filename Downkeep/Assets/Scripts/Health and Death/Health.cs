@@ -7,11 +7,13 @@ public class Health : MonoBehaviour
     public int curHealth = 1;
 
     [SerializeField] ParticleSystem bloodParticle;
+    [SerializeField] PitchShiftAudio hurtSound;
 
     public virtual void Hurt()
     {
         curHealth--;
         if(bloodParticle != null) bloodParticle.Play();
+        if(hurtSound != null) hurtSound.Play();
         if(curHealth <= 0)
         {
             Die();

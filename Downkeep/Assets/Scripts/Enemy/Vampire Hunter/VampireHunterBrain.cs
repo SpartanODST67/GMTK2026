@@ -33,6 +33,7 @@ public class VampireHunterBrain : MonoBehaviour
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
     bool isGrounded = true;
     bool isDead = false;
+    [SerializeField] PitchShiftAudio crossBowAudio;
 
     void Start()
     {
@@ -132,6 +133,7 @@ public class VampireHunterBrain : MonoBehaviour
 
     private void Shoot()
     {
+        crossBowAudio.Play();
         Instantiate(arrowPrefab, transform.position, Quaternion.Euler(0, 0, firingAngle));
     }
 

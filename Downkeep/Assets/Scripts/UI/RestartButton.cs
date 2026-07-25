@@ -19,6 +19,7 @@ public class RestartButton : MonoBehaviour
 
     private void OnClick()
     {
+        Time.timeScale = 1;
         transition.Slide(new Vector3(0, -1800, 0), Vector3.zero, () => SceneManager.LoadScene("SampleScene"));
     }
 }

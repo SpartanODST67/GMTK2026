@@ -15,9 +15,11 @@ public class Powerup : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
     Dictionary<PowerupType, Sprite> powerupSpritesDict;
     PowerupType type;
+    [SerializeField] int powerupChance = 100;
 
     void Awake()
     {
+        if(Random.Range(0, 100) >= powerupChance) Destroy(gameObject);
         powerupSpritesDict = powerupSprites.ToDict();
     }
 

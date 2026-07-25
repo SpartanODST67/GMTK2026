@@ -25,6 +25,7 @@ public class PlayerPuppet : InputPuppet
     [SerializeField] WhipAttack whipAttack;
     [SerializeField] ChainhookAttack chainhookAttack;
     [SerializeField] ParticleSystem bats;
+    [SerializeField] PitchShiftAudio batSFX;
 
     public override void MoveAction(Vector2 moveVector)
     {
@@ -54,6 +55,7 @@ public class PlayerPuppet : InputPuppet
 
         if(!isGrounded && !isCoyoteTime) {
             bats.Play();
+            batSFX.Play();
             curInAirJumps++;
         }
 

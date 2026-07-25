@@ -11,4 +11,7 @@ public static class Constants
     public const string MASTER_VOLUME_MIXER_KEY = "Master Volume";
     public const string SFX_VOLUME_MIXER_KEY = "SFX Volume";
     public const string BGM_VOLUME_MIXER_KEY = "BGM Volume";
+
+    public const string HIGH_SCORE_KEY = "high-score";
+    public const string BEST_DEPTH_KEY = "best-depth";
 }

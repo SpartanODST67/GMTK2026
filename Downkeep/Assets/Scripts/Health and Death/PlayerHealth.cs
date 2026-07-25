@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,7 @@ public class PlayerHealth : Health
     [SerializeField] float bounceForce;
     bool isInvincible = false;
     public UnityEvent onDeath;
+    [SerializeField] GameObject gameOverScreen;
 
     public void Hurt(Vector3 forceDirection)
     {
@@ -44,5 +46,8 @@ public class PlayerHealth : Health
     {
         base.Die();
         onDeath.Invoke();
+
+        Scorekeeper.Instance.RecordHighScore();
+        gameOverScreen.SetActive(true);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ public class Powerup : MonoBehaviour
     PowerupType type;
     [SerializeField] int powerupChance = 100;
     [SerializeField] AnimationCurve bobCurve;
+    [SerializeField] PitchShiftAudio pickupSound;
+    [SerializeField] BoxCollider2D bCollider2D;
     float time = 0;
     Vector3 startPosition;
 
@@ -68,6 +71,20 @@ public class Powerup : MonoBehaviour
             case PowerupType.JumpBoost:
                 JumpBoostPowerUp(collision);
                 break;
+        }
+
+        StartCoroutine(SelfDestruct());
+    }
+
+    IEnumerator SelfDestruct()
+    {
+        sprite.enabled = false;
+        bCollider2D.enabled = false; 
+
+        pickupSound.Play();
+        while(pickupSound.audioSource.isPlaying)
+        {
+            yield return null;
         }
 
         Destroy(gameObject);

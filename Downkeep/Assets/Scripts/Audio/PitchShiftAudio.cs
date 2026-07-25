@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PitchShiftAudio : MonoBehaviour
 {
-    [SerializeField] AudioSource audioSource;
+    public AudioSource audioSource;
     [SerializeField] Vector2 pitchModifierRange;
     float basePitch;
 

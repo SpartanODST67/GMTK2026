@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 enum VampireHunterState
@@ -21,6 +22,7 @@ public class VampireHunterBrain : MonoBehaviour
     float walkTime = 0;
     [SerializeField] float aimTime;
     [SerializeField] float attackRecoveryTime;
+    [SerializeField] float aimRange = 10f;
 
     [SerializeField] VampireHunterState state;
     float timeInState = 0;
@@ -38,9 +40,9 @@ public class VampireHunterBrain : MonoBehaviour
     void Start()
     {
         if(randomizeDirection)
-            direction = Random.Range(0, 2) == 0 ? -1 : 1;
+            direction = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
 
-        walkTime = Random.Range(walkTimeRange.x, walkTimeRange.y);
+        walkTime = UnityEngine.Random.Range(walkTimeRange.x, walkTimeRange.y);
     }
 
     void FixedUpdate()
@@ -102,14 +104,15 @@ public class VampireHunterBrain : MonoBehaviour
         switch(state)
         {
             case VampireHunterState.Walking:
-                state = VampireHunterState.Aiming;
+                if(Math.Abs(PlayerTracker.Instance.transform.position.y - transform.position.y) <= aimRange)
+                    state = VampireHunterState.Aiming;
                 break;
             case VampireHunterState.Aiming:
                 Shoot();
                 state = VampireHunterState.Recovering;
                 break;
             case VampireHunterState.Recovering:
-                walkTime = Random.Range(walkTimeRange.x, walkTimeRange.y);
+                walkTime = UnityEngine.Random.Range(walkTimeRange.x, walkTimeRange.y);
                 state = VampireHunterState.Walking;
                 break;
         }

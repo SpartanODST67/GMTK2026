@@ -722,6 +722,7 @@ MonoBehaviour:
   walkTimeRange: {x: 2, y: 4}
   aimTime: 1
   attackRecoveryTime: 2
+  aimRange: 8
   state: 0
   crossbowObject: {fileID: 4297990754397261502}
   arrowPrefab: {fileID: 3649627772743692868, guid: 2823f3e56fb1e5a488932ba4149df127, type: 3}
